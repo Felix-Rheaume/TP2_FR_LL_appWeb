@@ -82,9 +82,18 @@ function Inscription() {
         `Bienvenue ${nomUtilisateur}`,
         "Vous pouvez maintenant vous connecter!",
       ]);
+
+      viderChamps();
     } else {
       setErreurs(erreursValidations);
     }
+  };
+
+  const viderChamps = () => {
+    setPrenom("");
+    setNom("");
+    setNomUtilisateur("");
+    setMdp("");
   };
 
   const enregistrerUtilisateurBD = (prenom, nom, nomUtilisateur, mdp) => {
