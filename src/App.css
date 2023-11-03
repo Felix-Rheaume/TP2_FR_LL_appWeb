@@ -1,0 +1,59 @@
+.navLinks {
+  background-color: #22232b;
+  display: flex;
+  padding: 10px;
+  list-style-type: none;
+  padding-top: 30px;
+}
+
+.navLinks ul {
+  list-style-type: none;
+  display: flex;
+}
+
+.navLink {
+  padding: 15px 20px;
+  text-decoration: none;
+  color: darkgray;
+  list-style: none;
+}
+
+.navItem:hover {
+  background-color: #3e404e;
+}
+
+.active {
+  background-color: #fff;
+  color: #22232b;
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+div {
+  display: block;
+}
+
+table,
+th,
+td {
+  border: 1px solid gray;
+  padding: 10px;
+}
+
+th {
+  font-weight: normal;
+}
+
+table {
+  width: 100%;
+}
+
+/*Inscription*/
+.form-element {
+  display: block;
+  margin-top: 20px;
+}
