@@ -111,7 +111,7 @@ function Inscription() {
 
   return (
     <ContainerBase>
-      <AlerteFormulaire erreurs={erreurs} succes={messageSucces} show={true} />
+      <AlerteFormulaire erreurs={erreurs} succes={messageSucces} />
       <form onSubmit={enregistrerUtilisateur}>
         <label className='form-element' htmlFor='prenomInput'>
           Prénom

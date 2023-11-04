@@ -4,17 +4,37 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Accueil from "./Components/Accueil";
 import Calendrier from "./Components/Calendrier";
 import Inscription from "./Components/Inscription";
-
-// Le site web : TODO
+import Connexion from "./Components/Connexion";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function App() {
+  const [isConnected, setIsConnected] = useState(false);
+
+  useEffect(() => {
+    const serviceURL = "https://tp2weblawrence.azurewebsites.net";
+    const localServiceURL = "http://localhost:8081";
+    axios
+      .get(serviceURL + "/utilisateur/")
+      .then((res) => {
+        setIsConnected(true);
+      })
+      .catch((errors) => {
+        setIsConnected(false);
+      });
+  }, []);
+
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar isConnected={isConnected} />
       <Routes>
         <Route exact path='/' element={<Accueil />}></Route>
         <Route exact path='/inscription' element={<Inscription />}></Route>
-        <Route exact path='/calendrier' element={<Calendrier />}></Route>
+        {isConnected === true ? (
+          <Route exact path='/calendrier' element={<Calendrier />}></Route>
+        ) : (
+          <Route exact path='/connexion' element={<Connexion />}></Route>
+        )}
       </Routes>
     </BrowserRouter>
   );
