@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ContainerBase from "./ConteneurBase";
 import AlerteFormulaire from "./AlerteFormulaire";
 import axios from "axios";
+axios.defaults.withCredentials = true;
 
 const serviceURL = "https://tp2weblawrence.azurewebsites.net";
 const localServiceURL = "http://localhost:8081";
@@ -22,9 +23,7 @@ function Connexion() {
       })
       .catch((err) => {
         setMessageSucces(null);
-        setErreurs([
-          "Le nom d'utilisateur ou le mot de passe n'est pas valide",
-        ]);
+        setErreurs(["Le nom d'utilisateur ou le mot de passe n'est pas valide"]);
       })
       .finally(() => {
         setMdp("");

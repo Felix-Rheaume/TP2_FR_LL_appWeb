@@ -7,6 +7,7 @@ import Inscription from "./Components/Inscription";
 import Connexion from "./Components/Connexion";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+axios.defaults.withCredentials = true;
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
@@ -15,12 +16,14 @@ function App() {
     const serviceURL = "https://tp2weblawrence.azurewebsites.net";
     const localServiceURL = "http://localhost:8081";
     axios
-      .get(serviceURL + "/utilisateur/")
+      .get(localServiceURL + "/utilisateur/")
       .then((res) => {
         setIsConnected(true);
+        console.log("USE EFFECT");
       })
       .catch((errors) => {
         setIsConnected(false);
+        console.log("USE EFFECT ERROR");
       });
   }, []);
 

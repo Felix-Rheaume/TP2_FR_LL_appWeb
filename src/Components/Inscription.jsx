@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ContainerBase from "./ConteneurBase";
 import AlerteFormulaire from "./AlerteFormulaire";
 import axios from "axios";
+axios.defaults.withCredentials = true;
 
 const serviceURL = "https://tp2weblawrence.azurewebsites.net";
 
