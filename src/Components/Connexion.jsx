@@ -6,7 +6,7 @@ axios.defaults.withCredentials = true;
 
 const serviceURL = "https://tp2weblawrence.azurewebsites.net";
 
-function Connexion() {
+function Connexion(props) {
   const [nomUtilisateur, setNomUtilisateur] = useState("");
   const [mdp, setMdp] = useState("");
   const [messageSucces, setMessageSucces] = useState(null);
@@ -28,6 +28,7 @@ function Connexion() {
         setMdp("");
         setNomUtilisateur("");
       });
+      props.connected();
   };
 
   return (
