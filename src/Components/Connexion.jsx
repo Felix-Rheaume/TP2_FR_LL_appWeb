@@ -27,8 +27,8 @@ function Connexion(props) {
       .finally(() => {
         setMdp("");
         setNomUtilisateur("");
+        props.connected();
       });
-      props.connected;
   };
 
   return (
