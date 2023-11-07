@@ -5,9 +5,8 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 const serviceURL = "https://tp2weblawrence.azurewebsites.net";
-const localServiceURL = "http://localhost:8081";
 
-function Connexion() {
+function Connexion(props) {
   const [nomUtilisateur, setNomUtilisateur] = useState("");
   const [mdp, setMdp] = useState("");
   const [messageSucces, setMessageSucces] = useState(null);
@@ -16,10 +15,11 @@ function Connexion() {
   const connecterUtilisateur = (e) => {
     e.preventDefault();
     axios
-      .get(localServiceURL + `/utilisateur/${nomUtilisateur}/${mdp}`)
+      .get(serviceURL + `/utilisateur/${nomUtilisateur}/${mdp}`)
       .then((res) => {
         setErreurs(null);
         setMessageSucces(["Vous êtes maintenant connecté!"]);
+        props.updateIsConnected(true);
       })
       .catch((err) => {
         setMessageSucces(null);
