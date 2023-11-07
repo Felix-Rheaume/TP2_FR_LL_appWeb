@@ -24,10 +24,10 @@ function Connexion(props) {
         setMessageSucces(null);
         setErreurs(["Le nom d'utilisateur ou le mot de passe n'est pas valide"]);
       })
-      .finally(() => {
+      .finally(async () => {
         setMdp("");
         setNomUtilisateur("");
-        props.connected();
+        await props.connected();
       });
   };
 
