@@ -37,7 +37,7 @@ function App() {
         {isConnected === true ? (
           <Route exact path='/calendrier' element={<Calendrier />}></Route>
         ) : (
-          <Route exact path='/connexion' updateIsConnected={updateIsConnected} element={<Connexion />}></Route>
+          <Route exact path='/connexion' element={<Connexion />}></Route>
         )}
       </Routes>
     </BrowserRouter>

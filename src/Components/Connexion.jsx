@@ -6,7 +6,7 @@ axios.defaults.withCredentials = true;
 
 const serviceURL = "https://tp2weblawrence.azurewebsites.net";
 
-function Connexion(props) {
+function Connexion() {
   const [nomUtilisateur, setNomUtilisateur] = useState("");
   const [mdp, setMdp] = useState("");
   const [messageSucces, setMessageSucces] = useState(null);
@@ -19,7 +19,6 @@ function Connexion(props) {
       .then((res) => {
         setErreurs(null);
         setMessageSucces(["Vous êtes maintenant connecté!"]);
-        props.updateIsConnected(true);
       })
       .catch((err) => {
         setMessageSucces(null);
