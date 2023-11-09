@@ -1,6 +1,6 @@
 import "./App.css";
 import Navbar from "./Components/Navbar";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import Accueil from "./Components/Accueil";
 import Calendrier from "./Components/Calendrier";
 import Inscription from "./Components/Inscription";
@@ -18,12 +18,11 @@ function App() {
     axios
       .get(localServiceURL + "/utilisateur/")
       .then((res) => {
+        console.log(res);
         setIsConnected(true);
-        console.log("USE EFFECT");
       })
       .catch((errors) => {
         setIsConnected(false);
-        console.log("USE EFFECT ERROR");
       });
   }, []);
 
@@ -33,11 +32,8 @@ function App() {
       <Routes>
         <Route exact path='/' element={<Accueil />}></Route>
         <Route exact path='/inscription' element={<Inscription />}></Route>
-        {isConnected === true ? (
-          <Route exact path='/calendrier' element={<Calendrier />}></Route>
-        ) : (
-          <Route exact path='/connexion' element={<Connexion />}></Route>
-        )}
+        <Route exact path='/calendrier' element={<Calendrier />}></Route>
+        <Route exact path='/connexion' element={<Connexion />}></Route>
       </Routes>
     </BrowserRouter>
   );

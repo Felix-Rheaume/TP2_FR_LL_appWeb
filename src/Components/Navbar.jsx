@@ -17,19 +17,16 @@ function Navbar(props) {
             S'inscrire
           </NavLink>
         </li>
-        {isConnected === true ? (
-          <li>
-            <NavLink to='/calendrier' className='navLink'>
-              Calendrier
-            </NavLink>
-          </li>
-        ) : (
-          <li>
-            <NavLink to='/connexion' className='navLink'>
-              Connexion
-            </NavLink>
-          </li>
-        )}
+        <li>
+          <NavLink to='/calendrier' className='navLink'>
+            Calendrier
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to='/connexion' className='navLink'>
+            Connexion
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

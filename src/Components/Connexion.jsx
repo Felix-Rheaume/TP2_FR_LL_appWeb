@@ -15,15 +15,22 @@ function Connexion() {
 
   const connecterUtilisateur = (e) => {
     e.preventDefault();
+
     axios
       .get(localServiceURL + `/utilisateur/${nomUtilisateur}/${mdp}`)
       .then((res) => {
+        axios
+          .get(localServiceURL + "/utilisateur")
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err));
         setErreurs(null);
         setMessageSucces(["Vous êtes maintenant connecté!"]);
       })
       .catch((err) => {
         setMessageSucces(null);
-        setErreurs(["Le nom d'utilisateur ou le mot de passe n'est pas valide"]);
+        setErreurs([
+          "Le nom d'utilisateur ou le mot de passe n'est pas valide",
+        ]);
       })
       .finally(() => {
         setMdp("");
