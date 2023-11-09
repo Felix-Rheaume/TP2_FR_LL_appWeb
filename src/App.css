@@ -57,3 +57,67 @@ table {
   display: block;
   margin-top: 20px;
 }
+
+/*Slider d'événements*/
+.container {
+  width: 90%;
+  margin: auto;
+}
+
+.cards-container {
+  display: flex;
+  border-radius: 6px;
+  color: #333;
+  background: dimgray;
+  padding: 1rem;
+  box-shadow: 0 0 1rem #000 inset;
+  overflow-x: auto;
+  position: relative;
+}
+
+.card {
+  flex: 1 0 250px;
+  box-shadow: 0 1px 1rem -4px #000;
+  background-color: #aeb5fa;
+  margin: 1rem;
+  overflow: hidden;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+
+  &:hover {
+    box-shadow: 0 4px 1rem -4px #000;
+    transform: translateY(-3px);
+  }
+}
+
+.boutonSupprimer:hover {
+  text-decoration: underline;
+}
+
+.card-content {
+  padding: 1rem;
+  background-color: #aeb5fa;
+}
+
+.scrollbar {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.scrollbar::-webkit-scrollbar {
+  height: 10px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #343d9c96;
+  border-radius: 5px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: #aeb5fa;
+  border-radius: 5px;
+}
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #343d9c;
+}
