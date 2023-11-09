@@ -12,7 +12,7 @@ function Connexion(props) {
   const [messageSucces, setMessageSucces] = useState(null);
   const [erreurs, setErreurs] = useState(null);
 
-  const connecterUtilisateur = (e) => {
+  const connecterUtilisateur = async (e) => {
     e.preventDefault();
     axios
       .get(serviceURL + `/utilisateur/${nomUtilisateur}/${mdp}`)
@@ -27,6 +27,7 @@ function Connexion(props) {
       .finally(async () => {
         setMdp("");
         setNomUtilisateur("");
+        
         await props.connected();
       });
   };
