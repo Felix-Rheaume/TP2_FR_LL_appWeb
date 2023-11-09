@@ -11,12 +11,11 @@ axios.defaults.withCredentials = true;
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
+  const serviceURL = "https://tp2weblawrence.azurewebsites.net";
 
-  useEffect(() => {
-    const serviceURL = "https://tp2weblawrence.azurewebsites.net";
-    const localServiceURL = "http://localhost:8081";
-    axios
-      .get(localServiceURL + "/utilisateur/")
+  var updateIsConnected = async () => {
+    await axios
+      .get(serviceURL + "/utilisateur/")
       .then((res) => {
         console.log(res);
         setIsConnected(true);
@@ -24,7 +23,7 @@ function App() {
       .catch((errors) => {
         setIsConnected(false);
       });
-  }, []);
+  };
 
   return (
     <BrowserRouter>
@@ -32,8 +31,16 @@ function App() {
       <Routes>
         <Route exact path='/' element={<Accueil />}></Route>
         <Route exact path='/inscription' element={<Inscription />}></Route>
-        <Route exact path='/calendrier' element={<Calendrier />}></Route>
-        <Route exact path='/connexion' element={<Connexion />}></Route>
+        {isConnected === true ? (
+          <Route exact path='/calendrier' element={<Calendrier />}></Route>
+        ) : (
+          <Route
+            exact
+            path='/connexion'
+            connected={updateIsConnected}
+            element={<Connexion />}
+          ></Route>
+        )}
       </Routes>
     </BrowserRouter>
   );

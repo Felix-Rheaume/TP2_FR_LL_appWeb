@@ -5,9 +5,8 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 const serviceURL = "https://tp2weblawrence.azurewebsites.net";
-const localServiceURL = "http://localhost:8081";
 
-function Connexion() {
+function Connexion(props) {
   const [nomUtilisateur, setNomUtilisateur] = useState("");
   const [mdp, setMdp] = useState("");
   const [messageSucces, setMessageSucces] = useState(null);
@@ -17,7 +16,7 @@ function Connexion() {
     e.preventDefault();
 
     axios
-      .get(localServiceURL + `/utilisateur/${nomUtilisateur}/${mdp}`)
+      .get(serviceURL + `/utilisateur/${nomUtilisateur}/${mdp}`)
       .then((res) => {
         axios
           .get(localServiceURL + "/utilisateur")
@@ -32,9 +31,10 @@ function Connexion() {
           "Le nom d'utilisateur ou le mot de passe n'est pas valide",
         ]);
       })
-      .finally(() => {
+      .finally(async () => {
         setMdp("");
         setNomUtilisateur("");
+        await props.connected();
       });
   };
 
