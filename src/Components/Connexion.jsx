@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ContainerBase from "./ConteneurBase";
 import AlerteFormulaire from "./AlerteFormulaire";
 import axios from "axios";
+import { redirect } from "react-router-dom";
 axios.defaults.withCredentials = true;
 
 const serviceURL = "https://tp2weblawrence.azurewebsites.net";
@@ -14,21 +15,24 @@ function Connexion(props) {
 
   const connecterUtilisateur = async (e) => {
     e.preventDefault();
+    
     axios
       .get(serviceURL + `/utilisateur/${nomUtilisateur}/${mdp}`)
-      .then((res) => {
+      .then(async (res) => {
         setErreurs(null);
         setMessageSucces(["Vous êtes maintenant connecté!"]);
+        await props.connected();
       })
       .catch((err) => {
         setMessageSucces(null);
-        setErreurs(["Le nom d'utilisateur ou le mot de passe n'est pas valide"]);
+        if (err.response && err.response.status === 401) {
+          setErreurs(["Le nom d'utilisateur ou le mot de passe n'est pas valide"]);
+        }
       })
-      .finally(async () => {
+      .finally(() => {
         setMdp("");
         setNomUtilisateur("");
-        
-        await props.connected();
+        redirect("/");
       });
   };
 
