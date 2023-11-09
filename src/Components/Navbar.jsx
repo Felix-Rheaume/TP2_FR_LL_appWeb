@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 
 function Navbar(props) {
@@ -17,11 +17,15 @@ function Navbar(props) {
             S'inscrire
           </NavLink>
         </li>
-        <li>
-          <NavLink to='/calendrier' className='navLink'>
-            Calendrier
-          </NavLink>
-        </li>
+        {isConnected === true ? (
+          <li>
+            <NavLink to='/calendrier' className='navLink'>
+              Calendrier
+            </NavLink>
+          </li>
+        ) : (
+          <></>
+        )}
         <li>
           <NavLink to='/connexion' className='navLink'>
             Connexion

@@ -1,11 +1,11 @@
 import "./App.css";
 import Navbar from "./Components/Navbar";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Accueil from "./Components/Accueil";
 import Calendrier from "./Components/Calendrier";
 import Inscription from "./Components/Inscription";
 import Connexion from "./Components/Connexion";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
@@ -16,10 +16,11 @@ function App() {
 
   var updateIsConnected = async () => {
     await axios
-      .get(serviceURL + "/utilisateur/")
+      .get(serviceURL + "/utilisateur")
       .then((res) => {
-        console.log(res);
-        setIsConnected(true);
+        if (res.status === 200) {
+          setIsConnected(true);
+        }
       })
       .catch((errors) => {
         setIsConnected(false);
@@ -32,15 +33,16 @@ function App() {
       <Routes>
         <Route exact path='/' element={<Accueil />}></Route>
         <Route exact path='/inscription' element={<Inscription />}></Route>
-        {isConnected === true ? (
-          <Route exact path='/calendrier' element={<Calendrier />}></Route>
-        ) : (
-          <Route
-            exact
-            path='/connexion'
-            element={<Connexion connected={updateIsConnected} />}
-          ></Route>
-        )}
+        <Route
+          exact
+          path='/calendrier'
+          element={isConnected === true ? <Calendrier /> : <Navigate to='/' />}
+        ></Route>
+        <Route
+          exact
+          path='/connexion'
+          element={<Connexion connected={updateIsConnected} />}
+        ></Route>
       </Routes>
     </BrowserRouter>
   );
