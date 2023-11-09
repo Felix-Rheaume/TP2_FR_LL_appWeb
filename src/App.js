@@ -17,10 +17,10 @@ function App() {
     await axios
       .get(serviceURL + "/utilisateur/")
       .then((res) => {
-        setIsConnected(true);
+        setIsConnected(false);
       })
       .catch((errors) => {
-        setIsConnected(false);
+        setIsConnected(true);
       });
   }
 
