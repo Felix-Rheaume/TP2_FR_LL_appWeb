@@ -14,7 +14,10 @@ function App() {
   const serviceURL = "https://tp2weblawrence.azurewebsites.net";
 
   var updateIsConnected = async () => {
-    await axios
+    
+      // sleep for 1 second
+    setTimeout(async () => {
+      await axios
       .get(serviceURL + "/utilisateur")
       .then((res) => {
         if(res.status === 200){
@@ -24,6 +27,7 @@ function App() {
       .catch((errors) => {
         setIsConnected(false);
       });
+    }, 1000);
   }
 
   return (
