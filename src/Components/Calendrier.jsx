@@ -49,12 +49,13 @@ function Calendrier() {
     },
   ];
   const serviceURL = "https://tp2weblawrence.azurewebsites.net";
+  //const serviceURL = "http://localhost:8081";
 
-  // axios.get(serviceURL + "/evenements").then((res) => {
-  //   console.log(res);
-  // });
+  const [events, setEvents] = useState(null);
 
-  const [events, setEvents] = useState(sampleEvents);
+  axios.get(serviceURL + "/evenements").then((res) => {
+    setEvents(res.data);
+  });
 
   // useEffect(() => {
   //   axios.get("http://localhost:8081/evenements").then((res) => {

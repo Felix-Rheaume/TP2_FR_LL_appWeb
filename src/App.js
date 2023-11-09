@@ -12,6 +12,7 @@ axios.defaults.withCredentials = true;
 function App() {
   const [isConnected, setIsConnected] = useState(false);
   const serviceURL = "https://tp2weblawrence.azurewebsites.net";
+  //const serviceURL = "http://localhost:8081";
 
   var updateIsConnected = async () => {
     await axios
@@ -37,8 +38,7 @@ function App() {
           <Route
             exact
             path='/connexion'
-            connected={updateIsConnected}
-            element={<Connexion />}
+            element={<Connexion connected={updateIsConnected} />}
           ></Route>
         )}
       </Routes>

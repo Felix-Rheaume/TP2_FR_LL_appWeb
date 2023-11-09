@@ -5,6 +5,7 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 const serviceURL = "https://tp2weblawrence.azurewebsites.net";
+//const serviceURL = "http://localhost:8081";
 
 function Connexion(props) {
   const [nomUtilisateur, setNomUtilisateur] = useState("");
@@ -19,7 +20,7 @@ function Connexion(props) {
       .get(serviceURL + `/utilisateur/${nomUtilisateur}/${mdp}`)
       .then((res) => {
         axios
-          .get(localServiceURL + "/utilisateur")
+          .get(serviceURL + "/utilisateur")
           .then((res) => console.log(res))
           .catch((err) => console.log(err));
         setErreurs(null);

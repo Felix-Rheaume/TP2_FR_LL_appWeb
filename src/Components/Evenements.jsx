@@ -7,11 +7,7 @@ function Evenements(props) {
       <div className='mt-5 mx-auto'>
         <div className='cards-container scrollbar scrollbar-primary'>
           {props.evenements.map((event, index) => (
-            <EvenementCarte
-              key={index}
-              title={event.event_name}
-              content={event.event_name}
-            />
+            <EvenementCarte key={index} evenement={event} />
           ))}
         </div>
       </div>
