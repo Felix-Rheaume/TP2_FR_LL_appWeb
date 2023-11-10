@@ -5,8 +5,8 @@ import axios from "axios";
 import { redirect } from "react-router-dom";
 axios.defaults.withCredentials = true;
 
-const serviceURL = "https://tp2weblawrence.azurewebsites.net";
-//const serviceURL = "http://localhost:8081";
+//const serviceURL = "https://tp2weblawrence.azurewebsites.net";
+const serviceURL = "http://localhost:8081";
 
 function Connexion(props) {
   const [nomUtilisateur, setNomUtilisateur] = useState("");

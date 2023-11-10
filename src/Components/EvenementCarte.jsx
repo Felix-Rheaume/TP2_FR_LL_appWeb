@@ -1,10 +1,11 @@
 import axios from "axios";
 import React from "react";
+import { redirect } from "react-router-dom";
 
 axios.defaults.withCredentials = true;
 
-const serviceURL = "https://tp2weblawrence.azurewebsites.net";
-//const serviceURL = "http://localhost:8081";
+//const serviceURL = "https://tp2weblawrence.azurewebsites.net";
+const serviceURL = "http://localhost:8081";
 
 function EvenementCarte(props) {
   const dateToString = (dateString) => {
@@ -17,10 +18,16 @@ function EvenementCarte(props) {
 
   const supprimerEvenement = () => {
     const evenement_id = props.evenement.event_id;
-    console.log(props.title, " a été supprimé");
-    axios.delete(serviceURL + "/supprimerEvenement", {
-      event_id: evenement_id,
-    });
+    axios
+      .delete(serviceURL + "/supprimerEvenement", {
+        data: { event_id: evenement_id },
+      })
+      .then((res) => {
+        redirect("/calendrier");
+      })
+      .catch((err) => {
+        console.log("erreur de suppression: ", err);
+      });
   };
 
   return props.evenement ? (
