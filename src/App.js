@@ -9,6 +9,8 @@ import React, { useState } from "react";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
+// Url du site deployé : https://tp-2-fr-ll-app-web.vercel.app
+
 function App() {
   const [isConnected, setIsConnected] = useState(false);
   const serviceURL = "https://tp2weblawrence.azurewebsites.net";
