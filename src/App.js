@@ -15,6 +15,7 @@ function App() {
   // const serviceURL = "http://localhost:8081";
 
   var updateIsConnected = async () => {
+    // sleep for 1 second
     await axios
       .get(serviceURL + "/utilisateur")
       .then((res) => {
@@ -25,7 +26,7 @@ function App() {
       .catch((errors) => {
         setIsConnected(false);
       });
-    }
+
   };
 
   return (
