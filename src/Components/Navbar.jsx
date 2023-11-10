@@ -1,20 +1,20 @@
 import axios from "axios";
 import React from "react";
 import { NavLink, redirect } from "react-router-dom";
+axios.defaults.withCredentials = true;
 
 function Navbar(props) {
-  //const serviceURL = "https://tp2weblawrence.azurewebsites.net";
-  const serviceURL = "http://localhost:8081";
+  const serviceURL = "https://tp2weblawrence.azurewebsites.net";
+  // const serviceURL = "http://localhost:8081";
 
   const isConnected = props.isConnected;
 
   const deconnecter = () => {
-    axios.defaults.withCredentials = true;
     axios
       .get(serviceURL + "/deconnexion")
       .then((res) => {
+        props.setIsConnected(false);
         redirect("/");
-        props.setIsConnected(true);
       })
       .catch((err) => console.log(err));
   };

@@ -5,8 +5,8 @@ import axios from "axios";
 import { redirect } from "react-router-dom";
 axios.defaults.withCredentials = true;
 
-//const serviceURL = "https://tp2weblawrence.azurewebsites.net";
-const serviceURL = "http://localhost:8081";
+const serviceURL = "https://tp2weblawrence.azurewebsites.net";
+// const serviceURL = "http://localhost:8081";
 
 function Connexion(props) {
   const [nomUtilisateur, setNomUtilisateur] = useState("");
@@ -17,12 +17,12 @@ function Connexion(props) {
   const connecterUtilisateur = async (e) => {
     e.preventDefault();
 
-    axios
+    await axios
       .get(serviceURL + `/utilisateur/${nomUtilisateur}/${mdp}`)
       .then(async (res) => {
         setErreurs(null);
         setMessageSucces(["Vous êtes maintenant connecté!"]);
-        await props.connected();
+        props.connected(true);
       })
       .catch((err) => {
         setMessageSucces(null);
@@ -30,6 +30,7 @@ function Connexion(props) {
           setErreurs([
             "Le nom d'utilisateur ou le mot de passe n'est pas valide",
           ]);
+          props.connected(false);
         }
       })
       .finally(() => {

@@ -11,23 +11,11 @@ axios.defaults.withCredentials = true;
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
-  //const serviceURL = "https://tp2weblawrence.azurewebsites.net";
-  const serviceURL = "http://localhost:8081";
+  const serviceURL = "https://tp2weblawrence.azurewebsites.net";
+  // const serviceURL = "http://localhost:8081";
 
-  var updateIsConnected = async () => {
-    // sleep for 1 second
-    setTimeout(async () => {
-      await axios
-        .get(serviceURL + "/utilisateur")
-        .then((res) => {
-          if (res.status === 200) {
-            setIsConnected(true);
-          }
-        })
-        .catch((errors) => {
-          setIsConnected(false);
-        });
-    }, 1000);
+  var updateIsConnected = (isSuccess) => {
+    setIsConnected(isSuccess);
   };
 
   return (
