@@ -19,7 +19,7 @@ function Connexion(props) {
 
     axios
       .get(serviceURL + `/utilisateur/${nomUtilisateur}/${mdp}`)
-      .then(async (res) => {
+      .then((res) => {
         setErreurs(null);
         setMessageSucces(["Vous êtes maintenant connecté!"]);
         props.connected(true);
