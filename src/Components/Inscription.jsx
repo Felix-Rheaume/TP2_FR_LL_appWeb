@@ -4,8 +4,8 @@ import AlerteFormulaire from "./AlerteFormulaire";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-//const serviceURL = "https://tp2weblawrence.azurewebsites.net";
-const serviceURL = "http://localhost:8081";
+const serviceURL = "https://tp2weblawrence.azurewebsites.net";
+// const serviceURL = "http://localhost:8081";
 
 function Inscription() {
   const [prenom, setPrenom] = useState("");

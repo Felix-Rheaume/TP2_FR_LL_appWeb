@@ -11,8 +11,8 @@ axios.defaults.withCredentials = true;
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
-  //const serviceURL = "https://tp2weblawrence.azurewebsites.net";
-  const serviceURL = "http://localhost:8081";
+  const serviceURL = "https://tp2weblawrence.azurewebsites.net";
+  // const serviceURL = "http://localhost:8081";
 
   var updateIsConnected = async () => {
     // sleep for 1 second
