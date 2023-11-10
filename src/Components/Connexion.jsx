@@ -17,7 +17,7 @@ function Connexion(props) {
   const connecterUtilisateur = async (e) => {
     e.preventDefault();
 
-    axios
+    await axios
       .get(serviceURL + `/utilisateur/${nomUtilisateur}/${mdp}`)
       .then(async (res) => {
         setErreurs(null);
