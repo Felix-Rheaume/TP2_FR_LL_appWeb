@@ -4,6 +4,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import ContainerBase from "./ConteneurBase";
 import Evenements from "./Evenements";
 import axios from "axios";
+axios.defaults.withCredentials = true;
 
 function Calendrier() {
   axios.defaults.withCredentials = true;
