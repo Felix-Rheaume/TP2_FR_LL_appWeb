@@ -18,7 +18,9 @@ function Connexion(props) {
     e.preventDefault();
 
     axios
-      .get(serviceURL + `/utilisateur/${nomUtilisateur}/${mdp}`)
+      .get(serviceURL + `/utilisateur/${nomUtilisateur}/${mdp}`,{
+        withCredentials: true
+      })
       .then((res) => {
         setErreurs(null);
         setMessageSucces(["Vous êtes maintenant connecté!"]);

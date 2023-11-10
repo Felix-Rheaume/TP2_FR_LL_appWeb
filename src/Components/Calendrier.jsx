@@ -15,7 +15,9 @@ function Calendrier() {
 
   useEffect(() => {
     axios
-      .get(serviceURL + "/evenements")
+      .get(serviceURL + "/evenements",{
+        withCredentials: true
+      })
       .then((res) => {
         setEvents(res.data);
       })
