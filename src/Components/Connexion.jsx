@@ -22,7 +22,7 @@ function Connexion(props) {
       .then(async (res) => {
         setErreurs(null);
         setMessageSucces(["Vous êtes maintenant connecté!"]);
-        await props.connected();
+        props.connected(true);
       })
       .catch((err) => {
         setMessageSucces(null);
@@ -30,6 +30,7 @@ function Connexion(props) {
           setErreurs([
             "Le nom d'utilisateur ou le mot de passe n'est pas valide",
           ]);
+          props.connected(false);
         }
       })
       .finally(() => {
