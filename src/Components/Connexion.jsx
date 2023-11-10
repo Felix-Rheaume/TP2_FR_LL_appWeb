@@ -14,10 +14,10 @@ function Connexion(props) {
   const [messageSucces, setMessageSucces] = useState(null);
   const [erreurs, setErreurs] = useState(null);
 
-  const connecterUtilisateur = async (e) => {
+  const connecterUtilisateur = (e) => {
     e.preventDefault();
 
-    await axios
+    axios
       .get(serviceURL + `/utilisateur/${nomUtilisateur}/${mdp}`)
       .then(async (res) => {
         setErreurs(null);
