@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import { useState } from "react";
 import { redirect } from "react-router-dom";
 
 axios.defaults.withCredentials = true;
@@ -16,6 +17,8 @@ function EvenementCarte(props) {
     return annee + "-" + mois + "-" + jour;
   };
 
+  const [supprime, setSupprime] = useState(false);
+
   const supprimerEvenement = () => {
     const evenement_id = props.evenement.event_id;
     axios
@@ -27,6 +30,7 @@ function EvenementCarte(props) {
         },
       })
       .then((res) => {
+        setSupprime(true);
         redirect("/calendrier");
       })
       .catch((err) => {
@@ -35,6 +39,7 @@ function EvenementCarte(props) {
   };
 
   return props.evenement ? (
+    supprime === true ? null :
     <div className='card'>
       <div className='card-content'>
         <h2>{props.evenement.event_name}</h2>
