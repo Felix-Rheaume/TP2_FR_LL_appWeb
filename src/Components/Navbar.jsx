@@ -13,7 +13,7 @@ function Navbar(props) {
     axios
       .get(serviceURL + "/deconnexion")
       .then((res) => {
-        props.updateIsConnected(false);
+        props.setIsConnected(false);
         redirect("/");
       })
       .catch((err) => console.log(err));
