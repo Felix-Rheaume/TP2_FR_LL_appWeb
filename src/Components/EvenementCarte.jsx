@@ -21,6 +21,10 @@ function EvenementCarte(props) {
     axios
       .delete(serviceURL + "/supprimerEvenement", {
         data: { event_id: evenement_id },
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json'
+        },
       })
       .then((res) => {
         redirect("/calendrier");
