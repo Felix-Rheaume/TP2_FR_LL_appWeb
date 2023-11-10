@@ -5,7 +5,7 @@ axios.defaults.withCredentials = true;
 
 function Navbar(props) {
   const serviceURL = "https://tp2weblawrence.azurewebsites.net";
-  // const serviceURL = "http://localhost:8081";
+  //const serviceURL = "http://localhost:8081";
 
   const isConnected = props.isConnected;
 
@@ -27,11 +27,7 @@ function Navbar(props) {
             Accueil
           </NavLink>
         </li>
-        <li>
-          <NavLink to='/inscription' className='navLink'>
-            S'inscrire
-          </NavLink>
-        </li>
+
         {isConnected === true ? (
           <li>
             <NavLink to='/calendrier' className='navLink'>
@@ -39,13 +35,19 @@ function Navbar(props) {
             </NavLink>
           </li>
         ) : (
-          <></>
+          <>
+            <li>
+              <NavLink to='/inscription' className='navLink'>
+                S'inscrire
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='/connexion' className='navLink'>
+                Connexion
+              </NavLink>
+            </li>
+          </>
         )}
-        <li>
-          <NavLink to='/connexion' className='navLink'>
-            Connexion
-          </NavLink>
-        </li>
         {props.isConnected === true ? (
           <li>
             <button

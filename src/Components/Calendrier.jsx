@@ -9,14 +9,14 @@ axios.defaults.withCredentials = true;
 function Calendrier() {
   axios.defaults.withCredentials = true;
   const serviceURL = "https://tp2weblawrence.azurewebsites.net";
-  // const serviceURL = "http://localhost:8081";
+  //const serviceURL = "http://localhost:8081";
 
   const [events, setEvents] = useState(null);
 
   useEffect(() => {
     axios
-      .get(serviceURL + "/evenements",{
-        withCredentials: true
+      .get(serviceURL + "/evenements", {
+        withCredentials: true,
       })
       .then((res) => {
         setEvents(res.data);
